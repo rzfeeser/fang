@@ -1,0 +1,8 @@
+---
+- name: We want the OS and version of hosts we connect to
+  hosts: planetexpress
+  gather_facts: yes
+
+  tasks:
+
+

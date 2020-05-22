@@ -1,0 +1,21 @@
+[planetexpress]
+bender	ansible_host=10.10.2.3 ansible_user=bender
+fry	ansible_host=10.10.2.4 ansible_user=fry
+zoidberg	ansible_host=10.10.2.5 ansible_user=zoidberg
+farnsworth	ansible_host=10.10.2.6 ansible_user=farnsworth ansible_python_interpreter=/usr/bin/python
+
+[planetexpress:vars]
+ansible_ssh_pass=alta3
+
+[web]
+bender      ansible_host=10.10.2.3 ansible_user=bender
+fry         ansible_host=10.10.2.4 ansible_user=fry
+[web:vars]
+ansible_ssh_pass=alta3
+
+[planetexpress:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+[switches]
+ans-6493-sw1
+ans-6493-sw2

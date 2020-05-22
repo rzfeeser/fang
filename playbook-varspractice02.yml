@@ -1,0 +1,22 @@
+---
+- name: Using a complex vars file
+  hosts: localhost
+  gather_facts: False
+
+  vars_files:
+    - vars/titanvars.yml
+
+# The one did not work due to var defination need dictionary filter
+# tasks:
+# - name: debug with_dict
+#   debug:
+#     var: "{{ item }}"
+#   loop: "{{ prefix_list }}"  # this will FAIL because prefixlist is a dictionary
+
+
+  tasks:
+  - name: debug with_dict
+    debug:
+      var: "{{ item }}"
+    loop: "{{ prefix_list|dict2items }}"   ## edit this line to include dict2items
+    ## the above is a jinja filter

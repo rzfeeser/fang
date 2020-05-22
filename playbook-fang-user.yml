@@ -1,0 +1,20 @@
+---
+- name: targets the file "fang-user.txt"
+  gather_facts: no # we run against localhost
+  hosts: localhost
+  connection: local  # prevents SSHing to "yourself"
+
+  vars:
+       userlist:
+          - alice
+
+
+  tasks:
+          - name: replace a line in "files/fang-user.txt"
+            replace:
+                        path: files/fang-user.txt
+                        regexp: "^(.*)({{ item }})(.*)"
+                        replace: '\1\n\2\n\3'
+                        backup: yes
+            loop: "{{ userlist }}"
+
